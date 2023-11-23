@@ -8,7 +8,7 @@ import logger from "./helpers/logging";
 import authRoute from "./routes/authRoute";
 import productRoute from "./routes/productRoute";
 import cartRoute from "./routes/cartRoute";
-// import paymentRoute from "./routes/paymentRoute";
+import paymentRoute from "./routes/paymentRoute";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -24,7 +24,7 @@ app.use(helmet());
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/products", productRoute);
 app.use("/api/v1/cart", cartRoute);
-// app.use("/api/payment", paymentRoute);
+app.use("/api/payment", paymentRoute);
 
 // Start the server
 app.listen(PORT, () => {
