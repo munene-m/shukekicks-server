@@ -24,7 +24,7 @@ app.use(helmet());
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/products", productRoute);
 app.use("/api/v1/cart", cartRoute);
-app.use("/api/payment", paymentRoute);
+app.use("/api/v1/payment", paymentRoute);
 
 // Start the server
 app.listen(PORT, () => {
