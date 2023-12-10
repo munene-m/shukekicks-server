@@ -159,6 +159,16 @@ export async function loginAdmin(req: Request, res: Response) {
   }
 }
 
+export async function getUsers(req: Request, res: Response) {
+  try {
+    const items = await Auth.find().select("-password");
+
+    res.status(200).json(items);
+  } catch (error) {
+    logger.error("There are no users at this time");
+    res.status(400).json({ message: "There are no users at this time" });
+  }
+}
 const generateToken = (id: ObjectId) => {
   return jwt.sign({ id }, process.env.JWT_SECRET || "", {
     expiresIn: "1d",
