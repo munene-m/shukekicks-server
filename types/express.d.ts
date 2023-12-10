@@ -1,16 +1,12 @@
-// declare global {
-//   namespace Express {
-//     interface Request {
-//       admin: {};
-//     }
-//   }
-// }
+import { ObjectId } from "mongoose";
 
-// export {};
 declare global {
   namespace Express {
     interface Request {
       admin: {};
+      user: {
+        id: ObjectId;
+      };
     }
   }
 }
