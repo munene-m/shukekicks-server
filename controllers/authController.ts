@@ -169,6 +169,27 @@ export async function getUsers(req: Request, res: Response) {
     res.status(400).json({ message: "There are no users at this time" });
   }
 }
+
+export async function deleteUser(req: Request, res: Response) {
+  try {
+    const user = await Auth.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found " });
+    } else {
+      await Auth.findByIdAndDelete(req.params.id);
+      logger.info(`User - ${user.username} deleted successfully`);
+      res
+        .status(200)
+        .json({
+          message: `User - ${user.username}'s account deleted successfully`,
+        });
+    }
+  } catch (error) {
+    logger.error("User not found");
+    res.status(400).json({ message: "User not found" });
+  }
+}
+
 const generateToken = (id: ObjectId) => {
   return jwt.sign({ id }, process.env.JWT_SECRET || "", {
     expiresIn: "1d",
