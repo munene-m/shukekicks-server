@@ -89,7 +89,7 @@ export function validateAdminRegistration(
 export function validateProductFields(
   name: string,
   description: string,
-  size: number,
+  size: string,
   price: number,
   image: Express.Multer.File | undefined
 ) {
